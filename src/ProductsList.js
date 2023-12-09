@@ -73,6 +73,21 @@ export default function ProductsList() {
             setError(error.response.data.message)
         }
     }
+    const handleEdit = async (uuid) => {
+        setLoading(true);
+        try {
+            await axios.delete(`http://localhost:8080/products/${uuid}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            getData();
+        } catch (error){
+            console.log("Product fetch error", error)
+            setLoading(false)
+            setError(error.response.data.message)
+        }
+    }
 
     return (
         <div style={{minWidth: "1024px"}}>
@@ -119,6 +134,7 @@ export default function ProductsList() {
                     <td>{product.quantity}</td>
                     <td>
                         {isAdmin && <button className="btn btn-danger" onClick={() => handleDelete(product.id)}>Trinti</button>}
+                        {isAdmin && <button className="btn btn-warning" onClick={() => handleEdit(product.id)}>Edit</button>}
                     </td>
                 </tr>)}
                 </tbody>

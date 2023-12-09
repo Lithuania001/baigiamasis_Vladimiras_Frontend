@@ -28,7 +28,7 @@ export default function NewProduct(props) {
     return (
         <div className={"container d-flex flex-column gap-3 mt-2"}>
 
-            <h1>Naujo produkto pridėjimas</h1>
+            <h1>Naujo produkto pridėjimas yoo</h1>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Produkto pavadinimas</label>
                 <input value={name}
